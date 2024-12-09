@@ -1,5 +1,5 @@
 server:
-  port: 8123
+  port: 8127
   servlet:
     context-path: /api
 
@@ -12,3 +12,27 @@ spring:
     url: jdbc:mysql://localhost:3300/sy_picture
     username: root
     password: 123456
+
+mybatis-plus:
+  configuration:
+    # MyBatis 配置
+    map-underscore-to-camel-case: true
+    # 仅在开发环境打印日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+knife4j:
+  enable: true
+  openapi:
+    title: 接口文档
+    version: 1.0
+    group:
+      default:
+        group-name: 默认分组
+        api-rule: package
+        api-rule-resources:
+          - com.example.sypicturebackend.controller
