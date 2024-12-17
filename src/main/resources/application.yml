@@ -32,7 +32,6 @@ knife4j:
     version: 1.0
     group:
       default:
-        group-name: 默认分组
         api-rule: package
         api-rule-resources:
           - com.example.sypicturebackend.controller
