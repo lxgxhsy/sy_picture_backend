@@ -48,6 +48,7 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.9</version>
         </dependency>
+
        <!-- 接口文档： https://doc.xiaominfo.com/docs/features/enhance -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
