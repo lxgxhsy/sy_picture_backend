@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @Author: shiyong
+ * @Author: sy
  * @CreateTime: 2024-12-19
  * @Description: 用户更新信息
  * @Version: 1.0

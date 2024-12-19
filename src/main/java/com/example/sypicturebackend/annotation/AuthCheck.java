@@ -6,18 +6,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @Author: shiyong
+ * @Author: sy
  * @CreateTime: 2024-12-19
  * @Description:
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AuthCheck {
-
 	/**
-	 * 必须有一个角色
-	 * @return
-	 */
+	 * 必须具有某个角色
+	 **/
 	String mustRole() default "";
-
 }

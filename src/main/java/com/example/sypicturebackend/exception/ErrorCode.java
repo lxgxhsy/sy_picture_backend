@@ -19,6 +19,7 @@ public enum ErrorCode {
 	 * 状态码
 	 */
 	private final int code;
+
 	/**
 	 * 信息
 	 */

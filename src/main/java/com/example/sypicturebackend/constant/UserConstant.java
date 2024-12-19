@@ -1,7 +1,7 @@
 package com.example.sypicturebackend.constant;
 
 /**
- * @Author: shiyong
+ * @Author: sy
  * @CreateTime: 2024-12-19
  * @Description: 用户常量
  * @Version: 1.0

@@ -4,7 +4,7 @@ import cn.hutool.core.util.ObjUtil;
 import lombok.Getter;
 
 /**
- * @Author: shiyong
+ * @Author: sy
  * @CreateTime: 2024-12-18
  * @Description: 枚举类
  * @Version: 1.0

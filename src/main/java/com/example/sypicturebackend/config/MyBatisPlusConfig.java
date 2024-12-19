@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Author: shiyong
+ * @Author: sy
  * @CreateTime: 2024-12-19
  * @Description: 分页插件
  * @Version: 1.0

@@ -177,6 +177,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 		return true;
 	}
 
+	@Override
+	public boolean isAdmin(User user) {
+		return user != null && UserRoleEnum.ADMIN.getValue().equals(user.getUserRole());
+	}
+
 	/**
 	 * 加密密码
 	 * @param userPassword 用户密码

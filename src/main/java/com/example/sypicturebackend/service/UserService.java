@@ -19,6 +19,15 @@ public interface UserService extends IService<User> {
 
 
 	/**
+	 * 是否为管理员
+	 *
+	 * @param user
+	 * @return
+	 */
+	boolean isAdmin(User user);
+
+
+	/**
 	 * 加密密码
 	 * @param userPassword 用户密码
 	 * @return

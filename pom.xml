@@ -58,6 +58,12 @@
             <artifactId>mybatis-plus-jsqlparser-4.9</artifactId>
         </dependency>
 
+        <!-- 对象存储 -->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+            <version>5.6.227</version>
+        </dependency>
        <!-- 接口文档： https://doc.xiaominfo.com/docs/features/enhance -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
