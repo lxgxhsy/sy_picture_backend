@@ -3,10 +3,12 @@ package com.example.sypicturebackend.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.sypicturebackend.model.dto.picture.PictureQueryRequest;
+import com.example.sypicturebackend.model.dto.picture.PictureReviewRequest;
 import com.example.sypicturebackend.model.dto.picture.PictureUploadRequest;
 import com.example.sypicturebackend.model.entity.Picture;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.sypicturebackend.model.entity.User;
+import com.example.sypicturebackend.model.enums.PictureReviewStatusEnum;
 import com.example.sypicturebackend.model.vo.PictureVO;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -59,4 +61,20 @@ public interface PictureService extends IService<Picture> {
 	 * @return
 	 */
 	QueryWrapper<Picture> getQueryWrapper(PictureQueryRequest pictureQueryRequest);
+
+
+	/**
+	 * 图片审核
+	 * @param pictureReviewRequest
+	 * @param loginUser
+	 */
+    void doPictureReview(PictureReviewRequest pictureReviewRequest, User loginUser);
+
+	/**
+	 * 管理员自动过审
+	 * @param picture
+	 * @param loginUser
+	 */
+	void fillReviewParams(Picture picture, User loginUser);
+
 }

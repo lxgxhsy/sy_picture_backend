@@ -49,6 +49,7 @@ public class UserVO {
 	 */
 	private Date editTime;
 
+
 	/**
 	 * 创建时间
 	 */
