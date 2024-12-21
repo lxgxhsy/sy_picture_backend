@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.sypicturebackend.model.dto.picture.PictureQueryRequest;
 import com.example.sypicturebackend.model.dto.picture.PictureReviewRequest;
+import com.example.sypicturebackend.model.dto.picture.PictureUploadByBatchRequest;
 import com.example.sypicturebackend.model.dto.picture.PictureUploadRequest;
 import com.example.sypicturebackend.model.entity.Picture;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -27,17 +28,19 @@ public interface PictureService extends IService<Picture> {
 	 * @param picture
 	 */
 	void validPicture(Picture picture);
+
 	/**
 	 * 上传图片
 	 *
-	 * @param multipartFile
+	 * @param inputSource
 	 * @param pictureUploadRequest
 	 * @param loginUser
 	 * @return
 	 */
-	PictureVO uploadPicture(MultipartFile multipartFile,
+	PictureVO uploadPicture(Object inputSource,
 	                        PictureUploadRequest pictureUploadRequest,
 	                        User loginUser);
+
 	/**
 	 * 获取图片包装类（单条）
 	 *
@@ -46,6 +49,7 @@ public interface PictureService extends IService<Picture> {
 	 * @return
 	 */
 	PictureVO getPictureVO(Picture picture, HttpServletRequest request);
+
 	/**
 	 * 获取图片包装类（分页）
 	 *
@@ -54,6 +58,7 @@ public interface PictureService extends IService<Picture> {
 	 * @return
 	 */
 	Page<PictureVO> getPictureVOPage(Page<Picture> picturePage, HttpServletRequest request);
+
 	/**
 	 * 获取查询对象
 	 *
@@ -61,7 +66,6 @@ public interface PictureService extends IService<Picture> {
 	 * @return
 	 */
 	QueryWrapper<Picture> getQueryWrapper(PictureQueryRequest pictureQueryRequest);
-
 
 	/**
 	 * 图片审核
@@ -77,4 +81,12 @@ public interface PictureService extends IService<Picture> {
 	 */
 	void fillReviewParams(Picture picture, User loginUser);
 
+
+	/**
+	 * 管理员批量抓取图片
+	 * @param pictureUploadByBatchRequest
+	 * @param loginUser
+	 * @return 创建成功的图片数量
+	 */
+	int uploadPictureByBatch(PictureUploadByBatchRequest pictureUploadByBatchRequest, User loginUser);
 }

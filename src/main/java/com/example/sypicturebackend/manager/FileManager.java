@@ -40,6 +40,7 @@ import java.util.Locale;
 
 @Service
 @Slf4j
+@Deprecated()
 public class FileManager {
 
 	@Resource

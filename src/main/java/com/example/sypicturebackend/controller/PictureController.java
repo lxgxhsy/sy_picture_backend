@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * @Author: sy
  * @CreateTime: 2024-12-19
- * @Description:
+ * @Description: 改用 upload 包的服务
  * @Version: 1.0
  */
 
@@ -59,6 +59,34 @@ public class PictureController {
 		User loginUser = userService.getLoginUser(request);
 		PictureVO pictureVO = pictureService.uploadPicture(multipartFile, pictureUploadRequest, loginUser);
 		return ResultUtils.success(pictureVO);
+	}
+
+	/**
+	 * 上传图片（可重新上传）
+	 */
+	@PostMapping("/upload/url")
+//	@AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+	public BaseResponse<PictureVO> uploadPictureByUrl(
+			@RequestBody PictureUploadRequest pictureUploadRequest,
+			HttpServletRequest request) {
+		User loginUser = userService.getLoginUser(request);
+		String fileUrl = pictureUploadRequest.getFileUrl();
+		PictureVO pictureVO = pictureService.uploadPicture(fileUrl, pictureUploadRequest, loginUser);
+		return ResultUtils.success(pictureVO);
+	}
+
+	/**
+	 * 批量抓取图片
+	 */
+	@PostMapping("/upload/batch")
+	@AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+	public BaseResponse<Integer> uploadPictureByBatch(
+			@RequestBody PictureUploadByBatchRequest pictureUploadByBatchRequest,
+			HttpServletRequest request) {
+		ThrowUtils.throwIf(pictureUploadByBatchRequest == null, ErrorCode.PARAMS_ERROR);
+		User loginUser = userService.getLoginUser(request);
+		int uploadCount = pictureService.uploadPictureByBatch(pictureUploadByBatchRequest, loginUser);
+		return ResultUtils.success(uploadCount);
 	}
 
 	/**
