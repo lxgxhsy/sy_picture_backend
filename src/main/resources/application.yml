@@ -12,7 +12,14 @@ spring:
     url: jdbc:mysql://localhost:3300/sy_picture
     username: root
     password: 123456
-      # 开放更大的文件上传体积
+    # Redis 配置
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    timeout: 5000
+
+    # 开放更大的文件上传体积
   servlet:
      multipart:
         max-file-size: 10MB

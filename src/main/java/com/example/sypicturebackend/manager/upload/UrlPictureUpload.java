@@ -82,8 +82,8 @@ public class UrlPictureUpload extends PictureUploadTemplate {
 		// 将输入转换为字符串 URL
 		String fileUrl = (String) inputSource;
 
-		// 如果有扩展名，返回文件主名
-		return FileUtil.mainName(fileUrl) + "." +  FileUtil.getSuffix(fileUrl);
+		// 如果有扩展名，返回文件主名 这里不处理后缀 是为了图片压缩
+		return FileUtil.mainName(fileUrl);
 	}
 
 	@Override

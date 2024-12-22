@@ -110,6 +110,11 @@ public class Picture implements Serializable {
     private Date updateTime;
 
     /**
+     * 缩略图 url
+     */
+    private String thumbnailUrl;
+
+    /**
      * 是否删除
      */
     @TableLogic

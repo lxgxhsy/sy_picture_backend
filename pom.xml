@@ -37,18 +37,33 @@
             <version>1.15.3</version>
         </dependency>
 
+        <!-- Redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <!-- hutool工具  https://doc.hutool.cn/pages/index/#%F0%9F%8D%8Amaven-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.8.26</version>
         </dependency>
-       <!-- 数据库操作 https://baomidou.com/reference/#spring-boot-%E9%85%8D%E7%BD%AE-->
+
+        <!-- 本地缓存 Caffeine -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>3.1.8</version>
+        </dependency>
+
+        <!-- 数据库操作 https://baomidou.com/reference/#spring-boot-%E9%85%8D%E7%BD%AE-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
