@@ -2,10 +2,7 @@ package com.example.sypicturebackend.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.sypicturebackend.model.dto.picture.PictureQueryRequest;
-import com.example.sypicturebackend.model.dto.picture.PictureReviewRequest;
-import com.example.sypicturebackend.model.dto.picture.PictureUploadByBatchRequest;
-import com.example.sypicturebackend.model.dto.picture.PictureUploadRequest;
+import com.example.sypicturebackend.model.dto.picture.*;
 import com.example.sypicturebackend.model.entity.Picture;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.sypicturebackend.model.entity.User;
@@ -89,4 +86,35 @@ public interface PictureService extends IService<Picture> {
 	 * @return 创建成功的图片数量
 	 */
 	int uploadPictureByBatch(PictureUploadByBatchRequest pictureUploadByBatchRequest, User loginUser);
+
+
+	/**
+	 * 清除图片
+	 * @param oldPicture
+	 */
+	void clearPictureFile(Picture oldPicture);
+
+	/**
+	 * 校验空间图片的权限
+	 *
+	 * @param loginUser
+	 * @param picture
+	 */
+	void checkPictureAuth(User loginUser, Picture picture);
+
+	/**
+	 * 删除图片
+	 *
+	 * @param pictureId
+	 * @param loginUser
+	 */
+	void deletePicture(long pictureId, User loginUser);
+
+	/**
+	 * 编辑图片
+	 *
+	 * @param pictureEditRequest
+	 * @param loginUser
+	 */
+	void editPicture(PictureEditRequest pictureEditRequest, User loginUser);
 }

@@ -120,6 +120,11 @@ public class Picture implements Serializable {
     @TableLogic
     private Integer isDelete;
 
+    /**
+     * 空间 id（为空表示公共空间）
+     */
+    private Long spaceId;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }
