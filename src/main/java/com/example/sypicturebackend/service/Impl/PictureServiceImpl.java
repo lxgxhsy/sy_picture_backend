@@ -28,6 +28,7 @@ import com.example.sypicturebackend.mapper.PictureMapper;
 import com.example.sypicturebackend.service.SpaceService;
 import com.example.sypicturebackend.service.UserService;
 import com.example.sypicturebackend.utils.ColorSimilarUtils;
+import com.example.sypicturebackend.utils.ColorTransformUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -277,7 +278,7 @@ public class PictureServiceImpl extends ServiceImpl<PictureMapper, Picture>
 		picture.setPicSize(uploadPictureResult.getPicSize());
 		picture.setPicWidth(uploadPictureResult.getPicWidth());
 		picture.setPicHeight(uploadPictureResult.getPicHeight());
-		picture.setPicColor(uploadPictureResult.getPicColor());
+		picture.setPicColor(ColorTransformUtils.getStandardColor(uploadPictureResult.getPicColor()));
 		picture.setPicScale(uploadPictureResult.getPicScale());
 		picture.setPicFormat(uploadPictureResult.getPicFormat());
 		picture.setUserId(loginUser.getId());
