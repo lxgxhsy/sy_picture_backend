@@ -94,6 +94,11 @@ public class PictureVO implements Serializable {
 	private Date editTime;
 
 	/**
+	 * 图片颜色
+	 */
+	private String picColor;
+
+	/**
 	 * 更新时间
 	 */
 	private Date updateTime;

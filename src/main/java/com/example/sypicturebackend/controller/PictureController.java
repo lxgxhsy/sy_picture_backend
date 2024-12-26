@@ -4,6 +4,8 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.sypicturebackend.annotation.AuthCheck;
+import com.example.sypicturebackend.api.imagesearch.ImageSearchApiFacade;
+import com.example.sypicturebackend.api.imagesearch.model.ImageSearchResult;
 import com.example.sypicturebackend.common.BaseResponse;
 import com.example.sypicturebackend.common.DeleteRequest;
 import com.example.sypicturebackend.common.ResultUtils;
@@ -220,6 +222,7 @@ public class PictureController {
 		pictureQueryRequest.setReviewStatus(PictureReviewStatusEnum.PASS.getValue());
 		// 空间权限校验
 		Long spaceId = pictureQueryRequest.getSpaceId();
+
       // 公开图库
 		if (spaceId == null) {
 			// 普通用户默认只能查看已过审的公开数据
@@ -333,6 +336,46 @@ public class PictureController {
 		User loginUser = userService.getLoginUser(request);
 		pictureService.doPictureReview(pictureReviewRequest, loginUser);
 
+		return ResultUtils.success(true);
+	}
+
+	/**
+	 * 以图搜图
+	 */
+	@PostMapping("/search/picture")
+	public BaseResponse<List<ImageSearchResult>> searchPictureByPicture(@RequestBody SearchPictureByPictureRequest searchPictureByPictureRequest) {
+		ThrowUtils.throwIf(searchPictureByPictureRequest == null, ErrorCode.PARAMS_ERROR);
+		Long pictureId = searchPictureByPictureRequest.getPictureId();
+		ThrowUtils.throwIf(pictureId == null || pictureId <= 0, ErrorCode.PARAMS_ERROR);
+		Picture picture = pictureService.getById(pictureId);
+		ThrowUtils.throwIf(picture == null, ErrorCode.NOT_FOUND_ERROR);
+		// 因为只接受png的图片，所以加油吧
+		List<ImageSearchResult> resultList = ImageSearchApiFacade.searchImage(picture.getThumbnailUrl());
+		return ResultUtils.success(resultList);
+	}
+
+	/**
+	 * 按照颜色搜图
+	 */
+	@PostMapping("/search/color")
+	public BaseResponse<List<PictureVO>> searchPictureByPicture(@RequestBody SearchPictureByColorRequest  searchPictureByColorRequest, HttpServletRequest request) {
+		ThrowUtils.throwIf(searchPictureByColorRequest == null, ErrorCode.PARAMS_ERROR);
+		Long spaceId = searchPictureByColorRequest.getSpaceId();
+		String picColor = searchPictureByColorRequest.getPicColor();
+        User loginUser = userService.getLoginUser(request);
+
+		List<PictureVO> result = pictureService.searchPictureByColor(spaceId, picColor, loginUser);
+		return ResultUtils.success(result);
+	}
+
+	/**
+	 *      批量编辑图片
+	 */
+	@PostMapping("/edit/batch")
+	public BaseResponse<Boolean> editPictureByBatch(@RequestBody PictureEditByBatchRequest  pictureEditByBatchRequest, HttpServletRequest request) {
+		ThrowUtils.throwIf(pictureEditByBatchRequest == null, ErrorCode.PARAMS_ERROR);
+		User loginUser = userService.getLoginUser(request);
+		pictureService.editPictureByBatch(pictureEditByBatchRequest, loginUser);
 		return ResultUtils.success(true);
 	}
 

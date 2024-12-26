@@ -8,6 +8,7 @@ import lombok.Data;
 
 /**
  * 空间
+ * @author 诺诺
  * @TableName space
  */
 @TableName(value ="space")

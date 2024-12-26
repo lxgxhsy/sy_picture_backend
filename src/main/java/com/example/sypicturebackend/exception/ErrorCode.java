@@ -1,10 +1,15 @@
 package com.example.sypicturebackend.exception;
 
+import lombok.Getter;
+
 /**
  * 自定义错误码
+ *
  * @author sy
  */
 
+
+@Getter
 public enum ErrorCode {
 	SUCCESS(200,"ok"),
 	PARAMS_ERROR(40000, "请求参数错误"),

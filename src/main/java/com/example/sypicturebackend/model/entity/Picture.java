@@ -70,6 +70,11 @@ public class Picture implements Serializable {
     private String picFormat;
 
     /**
+     * 图片颜色
+     */
+    private String picColor;
+
+    /**
      * 创建用户 id
      */
     private Long userId;
@@ -88,6 +93,8 @@ public class Picture implements Serializable {
      * 状态：0-待审核; 1-通过; 2-拒绝
      */
     private Integer reviewStatus;
+
+
 
     /**
      * 审核信息

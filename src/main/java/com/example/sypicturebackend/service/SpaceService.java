@@ -1,15 +1,12 @@
 package com.example.sypicturebackend.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.sypicturebackend.model.dto.picture.PictureQueryRequest;
 import com.example.sypicturebackend.model.dto.space.SpaceAddRequest;
 import com.example.sypicturebackend.model.dto.space.SpaceQueryRequest;
-import com.example.sypicturebackend.model.entity.Picture;
-import com.example.sypicturebackend.model.entity.Space;
-import com.baomidou.mybatisplus.extension.service.IService;
+
 import com.example.sypicturebackend.model.entity.User;
-import com.example.sypicturebackend.model.vo.PictureVO;
+import com.example.sypicturebackend.model.entity.Space;
 import com.example.sypicturebackend.model.vo.SpaceVO;
 
 import javax.servlet.http.HttpServletRequest;

@@ -11,8 +11,8 @@ package com.example.sypicturebackend.exception;
 public class ThrowUtils {
 	/**
 	 * 条件成立抛出异常
-	 * @param condition
-	 * @param runtimeException
+	 * @param condition 条件
+	 * @param runtimeException 运行时错误
 	 */
 	public static void throwIf(boolean condition, RuntimeException runtimeException){
 		if(condition){
@@ -22,8 +22,8 @@ public class ThrowUtils {
 
 	/**
 	 * 条件成立抛出异常
-	 * @param condition
-	 * @param errorCode
+	 * @param condition 异常情况
+	 * @param errorCode 错误码
 	 */
 	public static void throwIf(boolean condition, ErrorCode errorCode){
 		throwIf(condition, new BusinessException(errorCode));
