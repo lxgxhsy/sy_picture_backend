@@ -64,6 +64,11 @@ public class Space implements Serializable {
     private Long maxCount;
 
     /**
+     * 空间类型：0-私有 1-团队
+     */
+    private Integer spaceType;
+
+    /**
      * 编辑时间
      */
     private Date editTime;
