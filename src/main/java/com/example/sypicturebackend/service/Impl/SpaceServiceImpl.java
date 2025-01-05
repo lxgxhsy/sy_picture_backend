@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.sypicturebackend.exception.BusinessException;
 import com.example.sypicturebackend.exception.ErrorCode;
 import com.example.sypicturebackend.exception.ThrowUtils;
+import com.example.sypicturebackend.manager.sharding.DynamicShardingManager;
 import com.example.sypicturebackend.model.dto.space.SpaceAddRequest;
 import com.example.sypicturebackend.model.dto.space.SpaceQueryRequest;
 import com.example.sypicturebackend.model.entity.Picture;
@@ -52,8 +53,12 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
 	private UserService userService;
 
 	@Resource
-	@Lazy
 	private SpaceUserService spaceUserService;
+
+	// 为了方便部署 暂时不使用
+//	@Resource
+//	@Lazy
+//	private DynamicShardingManager dynamicShardingManager;
 
 	/**
 	* 编程式事务处理器
@@ -123,6 +128,9 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
 						result = spaceUserService.save(spaceUser);
 						ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR, "创建团队成员记录失败");
 					}
+				             // 创建分表（仅对团队空间生效）为方便部署，暂时不使用
+//                  dynamicShardingManager.createSpacePictureTable(space);
+
 					// 返回新写入的数据 id
 					return space.getId();
 				});

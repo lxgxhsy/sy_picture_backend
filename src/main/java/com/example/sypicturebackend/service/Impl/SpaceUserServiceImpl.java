@@ -22,6 +22,7 @@ import com.example.sypicturebackend.service.SpaceUserService;
 import com.example.sypicturebackend.mapper.SpaceUserMapper;
 import com.example.sypicturebackend.service.UserService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -42,6 +43,7 @@ public class SpaceUserServiceImpl extends ServiceImpl<SpaceUserMapper, SpaceUser
     implements SpaceUserService{
 
 	@Resource
+	@Lazy
 	private SpaceService spaceService;
 
 	@Resource

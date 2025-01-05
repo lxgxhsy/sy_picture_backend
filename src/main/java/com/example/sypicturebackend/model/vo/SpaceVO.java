@@ -7,7 +7,9 @@ import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: sy
@@ -84,6 +86,12 @@ public class SpaceVO implements Serializable {
 	 * 创建用户信息
 	 */
 	private UserVO user;
+
+	/**
+	 * 权限列表
+	 */
+	private List<String> permissionList = new ArrayList<>();
+
 
 	private static final long serialVersionUID = 1L;
 
