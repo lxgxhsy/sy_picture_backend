@@ -12,7 +12,6 @@ import cn.hutool.json.JSONUtil;
 import com.example.sypicturebackend.constant.UserConstant;
 import com.example.sypicturebackend.exception.BusinessException;
 import com.example.sypicturebackend.exception.ErrorCode;
-import com.example.sypicturebackend.exception.ThrowUtils;
 import com.example.sypicturebackend.manager.auth.model.SpaceUserPermissionConstant;
 import com.example.sypicturebackend.model.entity.Picture;
 import com.example.sypicturebackend.model.entity.Space;
@@ -32,13 +31,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
- * 自定义权限加载接口实现类
+ * 自定义权限加载接口实现类 保证此类被 SpringBoot 扫描，完成 Sa-Token 的自定义权限验证扩展
  * @author 诺诺
  */
-@Component    // 保证此类被 SpringBoot 扫描，完成 Sa-Token 的自定义权限验证扩展
+@Component
 public class StpInterfaceImpl implements StpInterface {
 
     @Value("${server.servlet.context-path}")
@@ -160,8 +158,8 @@ public class StpInterfaceImpl implements StpInterface {
 
     /**
      * 判断对象的所有字段是否为空
-     * @param o
-     * @return
+     * @param o 对象
+     * @return 是否为空
      */
     private boolean isAllFieldsNull(Object o) {
         if(o == null){
@@ -180,7 +178,7 @@ public class StpInterfaceImpl implements StpInterface {
     @Override
     public List<String> getRoleList(Object loginId, String loginType) {
         // 本 list 仅做模拟，实际项目中要根据具体业务逻辑来查询角色
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         list.add("admin");
         list.add("super-admin");
         return list;
