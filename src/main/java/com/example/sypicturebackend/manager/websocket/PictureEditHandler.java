@@ -39,7 +39,7 @@ public class PictureEditHandler extends TextWebSocketHandler {
 	/** 每张图片的编辑状态，key: pictureId, value: 当前正在编辑的用户 ID**/
 	private final Map<Long, Long> pictureEditingUsers = new ConcurrentHashMap<>();
 	/** 保存所有连接的会话，key: pictureId, value: 用户会话集合**/
-	private final Map<Long, Set<WebSocketSession>> pictureSessions = new ConcurrentHashMap<>();
+	private   Map<Long, Set<WebSocketSession>> pictureSessions = new ConcurrentHashMap<>();
 	/**
 	 * 连接建立成功
 	 *

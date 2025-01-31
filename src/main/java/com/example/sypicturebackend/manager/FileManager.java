@@ -55,12 +55,10 @@ public class FileManager {
 	public UploadPictureResult  uploadPicture(String fileUrl, String uploadPathPrefix){
 		// 校验图片
 //		validPicture(multipartFile);
-		// todo
 		validPicture(fileUrl);
 		// 图片上传地址
 		String uuid = RandomUtil.randomString(16);
 //		String originalFilename = multipartFile.getOriginalFilename();
-		// todo
 		String originalFilename = FileUtil.mainName(fileUrl);
 		// 自己拼接文件上传路径，而不是使用原始文件名称，可以增强安全性
 		String uploadFilename = String.format("%s_%s.%s", DateUtil.formatDate(new Date()), uuid,
@@ -70,7 +68,6 @@ public class FileManager {
 		try {
 			// 上传文件
 			file = File.createTempFile(uploadPath, null);
-			// todo
 			HttpUtil.downloadFile(fileUrl,file);
 //			multipartFile.transferTo(file);
 			PutObjectResult putObjectResult = cosManager.putPictureObject(uploadPath, file);
