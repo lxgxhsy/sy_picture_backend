@@ -1,6 +1,5 @@
 package com.example.sypicturebackend.model.vo;
 
-
 import lombok.Data;
 
 import java.util.Date;

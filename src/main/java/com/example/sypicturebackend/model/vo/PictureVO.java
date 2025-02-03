@@ -8,6 +8,7 @@ import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -94,14 +95,29 @@ public class PictureVO implements Serializable {
 	private Date editTime;
 
 	/**
+	 * 图片颜色
+	 */
+	private String picColor;
+
+	/**
 	 * 更新时间
 	 */
 	private Date updateTime;
 
 	/**
+	 * 空间 id
+	 */
+	private Long spaceId;
+
+	/**
 	 * 创建用户信息
 	 */
 	private UserVO user;
+
+	/**
+	 * 权限列表
+	 */
+	private List<String> permissionList = new ArrayList<>();
 
 
 	/**

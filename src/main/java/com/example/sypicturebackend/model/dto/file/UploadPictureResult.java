@@ -4,6 +4,7 @@ import lombok.Data;
 
 /**
  * 上传图片的结果
+ * @author 诺诺
  */
 
 @Data
@@ -12,6 +13,12 @@ public class UploadPictureResult {
 	 * 图片地址
 	 */
 	private String url;
+
+	/**
+	 * 缩略图 url
+	 */
+	private String thumbnailUrl;
+
 	/**
 	 * 图片名称
 	 */
@@ -36,4 +43,9 @@ public class UploadPictureResult {
 	 * 图片格式
 	 */
 	private String picFormat;
+
+	/**
+	 * 图片颜色
+	 */
+	private String picColor;
 }
