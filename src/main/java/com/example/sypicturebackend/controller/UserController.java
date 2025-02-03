@@ -42,7 +42,6 @@ public class UserController {
 	 * 用户注册
 	 */
 	@PostMapping("/register")
-	@AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
 	public BaseResponse<Long> userRegister(@RequestBody  UserRegisterRequest userRegisterRequest) {
 		ThrowUtils.throwIf(userRegisterRequest == null, ErrorCode.PARAMS_ERROR);
 		String userAccount = userRegisterRequest.getUserAccount();
@@ -69,7 +68,7 @@ public class UserController {
 	 * 获取当前登录用户
 	 */
 	@GetMapping("/get/login")
-	public BaseResponse<LoginUserVO> getLoginUser(@RequestBody HttpServletRequest request) {
+	public BaseResponse<LoginUserVO> getLoginUser( HttpServletRequest request) {
 
 		User loginUser = userService.getLoginUser(request);
 		return ResultUtils.success(userService.getLoginUserVO(loginUser));
@@ -79,7 +78,7 @@ public class UserController {
 	 *  用户注销
 	 */
 	@PostMapping("/logout")
-	public BaseResponse<Boolean> userLogout(@RequestBody HttpServletRequest request) {
+	public BaseResponse<Boolean> userLogout( HttpServletRequest request) {
 
 		ThrowUtils.throwIf(request == null, ErrorCode.PARAMS_ERROR);
 		boolean result = userService.userLogout( request);
