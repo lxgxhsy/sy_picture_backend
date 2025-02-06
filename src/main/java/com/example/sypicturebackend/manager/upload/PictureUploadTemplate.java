@@ -110,6 +110,7 @@ public abstract class PictureUploadTemplate {
 		uploadPictureResult.setPicWidth(picWidth);
 		uploadPictureResult.setPicHeight(picHeight);
 		uploadPictureResult.setPicScale(picScale);
+		uploadPictureResult.setPicColor(imageInfo.getAve());
 		uploadPictureResult.setPicFormat(compressedCiObject.getFormat());
 		uploadPictureResult.setPicSize(compressedCiObject.getSize().longValue());
 		uploadPictureResult.setUrl(cosClientConfig.getHost() + "/" + compressedCiObject.getKey());
