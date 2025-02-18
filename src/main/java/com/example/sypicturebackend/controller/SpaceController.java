@@ -164,6 +164,7 @@ public class SpaceController {
 		long size = spaceQueryRequest.getPageSize();
 		// 限制爬虫
 		ThrowUtils.throwIf(size > 20, ErrorCode.PARAMS_ERROR);
+
 		// 查询数据库
 		Page<Space> spacePage = spaceService.page(new Page<>(current, size),
 				spaceService.getQueryWrapper(spaceQueryRequest));

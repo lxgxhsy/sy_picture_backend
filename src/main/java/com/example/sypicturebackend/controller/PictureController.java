@@ -376,8 +376,9 @@ public class PictureController {
 		ThrowUtils.throwIf(pictureId == null || pictureId <= 0, ErrorCode.PARAMS_ERROR);
 		Picture picture = pictureService.getById(pictureId);
 		ThrowUtils.throwIf(picture == null, ErrorCode.NOT_FOUND_ERROR);
+		String url = picture.getUrl()+"?imageMogr2/format/png";
 		// 因为只接受png的图片，所以加油吧
-		List<ImageSearchResult> resultList = ImageSearchApiFacade.searchImage(picture.getThumbnailUrl());
+		List<ImageSearchResult> resultList = ImageSearchApiFacade.searchImage(url);
 		return ResultUtils.success(resultList);
 	}
 

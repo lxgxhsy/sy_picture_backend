@@ -1,5 +1,6 @@
 package com.example.sypicturebackend.service.Impl;
 
+import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjUtil;
@@ -10,6 +11,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.sypicturebackend.exception.BusinessException;
 import com.example.sypicturebackend.exception.ErrorCode;
 import com.example.sypicturebackend.exception.ThrowUtils;
+import com.example.sypicturebackend.manager.auth.StpKit;
 import com.example.sypicturebackend.manager.sharding.DynamicShardingManager;
 import com.example.sypicturebackend.model.dto.space.SpaceAddRequest;
 import com.example.sypicturebackend.model.dto.space.SpaceQueryRequest;
@@ -112,7 +114,7 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
 					// 判断是否已有空间
 					boolean exists = this.lambdaQuery()
 							.eq(Space::getUserId, userId)
-							.eq(Space::getSpaceType, spaceAddRequest.getSpaceType())
+							.eq(Space::getSpaceType, space.getSpaceType())
 							.exists();
 					// 如果已有空间，就不能再创建
 					ThrowUtils.throwIf(exists, ErrorCode.OPERATION_ERROR, "每个用户每类空间只能创建一个空间");
@@ -198,6 +200,7 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
 	 */
 	@Override
 	public Page<SpaceVO> getSpaceVOPage(Page<Space> spacePage, HttpServletRequest request) {
+
 		List<Space> spaceList = spacePage.getRecords();
 		Page<SpaceVO> spaceVOPage = new Page<>(spacePage.getCurrent(), spacePage.getSize(), spacePage.getTotal());
 		if (CollUtil.isEmpty(spaceList)) {
@@ -208,8 +211,9 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
 				.map(SpaceVO::objToVo)
 				.collect(Collectors.toList());
 		// 1. 关联查询用户信息
+		// 1,2,3,4
 		Set<Long> userIdSet = spaceList.stream().map(Space::getUserId).collect(Collectors.toSet());
-		// 1 => user1 2 => user2
+		// 1 => user1, 2 => user2
 		Map<Long, List<User>> userIdUserListMap = userService.listByIds(userIdSet).stream()
 				.collect(Collectors.groupingBy(User::getId));
 		// 2. 填充信息
@@ -223,12 +227,13 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
 		});
 		spaceVOPage.setRecords(spaceVOList);
 		return spaceVOPage;
+
 	}
 
 	@Override
 	public QueryWrapper<Space> getQueryWrapper(SpaceQueryRequest spaceQueryRequest) {
 		QueryWrapper<Space> queryWrapper = new QueryWrapper<>();
-		if(spaceQueryRequest != null){
+		if(spaceQueryRequest == null){
 			return queryWrapper;
 		}
 		Long id = spaceQueryRequest.getId();

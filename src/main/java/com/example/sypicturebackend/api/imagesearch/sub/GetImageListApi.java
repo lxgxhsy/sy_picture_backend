@@ -70,7 +70,7 @@ public class GetImageListApi {
 	}
 
 	public static void main(String[] args) {
-		String url = "https://graph.baidu.com/ajax/pcsimi?carousel=503&entrance=GENERAL&extUiData%5BisLogoShow%5D=1&inspire=general_pc&limit=30&next=2&render_type=card&session_id=16250747570487381669&sign=1265ce97cd54acd88139901733452612&tk=4caaa&tpl_from=pc";
+		String url = "https://graph.baidu.com/ajax/pcsimi?carousel=503&entrance=GENERAL&extUiData%5BisLogoShow%5D=1&inspire=general_pc&limit=30&next=2&render_type=card&session_id=4530809988190593597&sign=121a94bd7657f237d822501739884631&tk=ad508&tpl_from=pc";
 		List<ImageSearchResult> imageList = getImageList(url);
 		System.out.println("搜索成功" + imageList);
 	}

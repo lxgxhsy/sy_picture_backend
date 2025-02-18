@@ -66,7 +66,7 @@ public class GetImageFirstUrlApi {
 
 	public static void main(String[] args) {
 		// 请求目标 URL
-		String url = "https://graph.baidu.com/s?card_key=&entrance=GENERAL&extUiData[isLogoShow]=1&f=all&isLogoShow=1&session_id=16250747570487381669&sign=1265ce97cd54acd88139901733452612&tpl_from=pc";
+		String url = "https://graph.baidu.com/s?card_key=&entrance=GENERAL&extUiData[isLogoShow]=1&f=all&isLogoShow=1&session_id=4530809988190593597&sign=121a94bd7657f237d822501739884631&tpl_from=pc";
 		String imageFirstUrl = getImageFirstUrl(url);
 		System.out.println("搜索成功，结果 URL：" + imageFirstUrl);
 	}
