@@ -387,7 +387,7 @@ public class PictureController {
 	 */
 	@PostMapping("/search/color")
 	@SaSpaceCheckPermission(value = SpaceUserPermissionConstant.PICTURE_VIEW)
-	public BaseResponse<List<PictureVO>> searchPictureByPicture(@RequestBody SearchPictureByColorRequest  searchPictureByColorRequest, HttpServletRequest request) {
+	public BaseResponse<List<PictureVO>> searchPictureByColor(@RequestBody SearchPictureByColorRequest  searchPictureByColorRequest, HttpServletRequest request) {
 		ThrowUtils.throwIf(searchPictureByColorRequest == null, ErrorCode.PARAMS_ERROR);
 		Long spaceId = searchPictureByColorRequest.getSpaceId();
 		String picColor = searchPictureByColorRequest.getPicColor();
